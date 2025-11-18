@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-  <title>Madzy's Little Adventure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madzy's Little Adventure</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
-    <script src="TitleScene.js"></script>
-    <script src="GameScene.js"></script>
-    <script src="main.js"></script>
-  </body>
+</head>
+<body>
+    <main class="game_screen" id="title">
+        <article class="title_screen">
+            <section class="overlay">
+                <div class="menu_screen">
+                    <div class="left">
+                        <div class="logo">
+                        </div>
+                        <div class="title_logo">
+                        </div>
+                    </div>
+                    <div class="right">
+                        <h1>Madzy's Little Adventure</h1>
+                        <div class="container">
+                        <button id="start-game" onclick="window.location.href='./game.html'">Start Game</button>
+                        <button>View Leaderboard</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+</body>
 </html>

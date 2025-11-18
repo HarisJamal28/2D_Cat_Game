@@ -1,7 +1,7 @@
 class GameScene extends Phaser.Scene {
-  constructor() {
-    super({ key: 'GameScene' });
-  }
+    constructor() {
+        super({ key: 'GameScene' }); // <-- this is the key
+    }
 
   preload() {
     this.load.image('background', 'assets/background_madz_game.png');
@@ -46,19 +46,48 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+        const instructions = 
+        'Controls:\n\n' +
+        'W / Arrow Up / Space → Jump\n' +
+        'A / Left Arrow → Move Left\n' +
+        'D / Right Arrow → Move Right\n' +
+        'Shift → Run\n' +
+        'Esc → Pause\n\n'+
+        'Click to Continue';
     this.playerHealth = 3;
     this.physics.world.gravity.y = 100;
     const width = this.scale.width;
     const height = this.scale.height;
     this.scoreMessages = ['Amazing!', 'Stompy!', 'Maddy Da Baddie!'];
+    if (this.bgMusic) this.bgMusic.stop();
+
+
+    const clickOverlay = this.add.rectangle(0, 0, width, height, 0x000000, 0.5)
+        .setOrigin(0, 0)
+        .setDepth(100)
+        .setInteractive({ useHandCursor: true });
+
+    const clickText = this.add.text(width / 2, height / 2, instructions, {
+        fontSize: '32px',
+        fontFamily: '"Press Start 2P"',
+        fill: '#ffffff'
+    }).setOrigin(0.5).setDepth(101);
+
+    // Once the user clicks, play the music and remove the overlay
+    clickOverlay.once('pointerdown', () => {
+        // Start background music
+        this.bgMusic = this.sound.add('BGMusic', { volume: 0.1, loop: true });
+        this.bgMusic.play();
+                clickOverlay.destroy();
+        clickText.destroy();
+    });
 
     this.stompSound = this.sound.add('enemyStomp',{ volume:0.3 });
     this.HissSound = this.sound.add('enemyHiss',{ volume: 0.1 });
 
-    if (this.bgMusic) this.bgMusic.stop();
 
-    this.bgMusic = this.sound.add('BGMusic', { volume: 0.1, loop: true });
-    this.bgMusic.play();
+    // this.bgMusic = this.sound.add('BGMusic', { volume: 0.1, loop: true });
+    // this.bgMusic.play();
     this.meow = this.sound.add('meow',{ volume:0.3 });
 
     this.bg = this.add.image(0, 0, 'background').setOrigin(0, 0).setDisplaySize(width, height).setScrollFactor(0);

@@ -4,7 +4,7 @@ const config = {
   height: window.innerHeight,
    pixelArt: true, 
   backgroundColor: '#87ceeb', // sky blue background
-  scene: [TitleScene, GameScene],
+  scene: [GameScene],
   physics: {
     default: 'arcade',
     arcade: {

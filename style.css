@@ -1,8 +1,113 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-body {
+.game_screen {
+  height: 100vh;
+  width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game_screen .title_screen {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/Background.webp");
+  background-repeat: repeat;
+  background-size: contain;
+}
+.game_screen .title_screen .overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 145, 255, 0.8705882353);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.game_screen .title_screen .overlay .menu_screen {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+}
+.game_screen .title_screen .overlay .menu_screen .left, .game_screen .title_screen .overlay .menu_screen .right {
+  flex: 1;
+}
+.game_screen .title_screen .overlay .menu_screen .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.game_screen .title_screen .overlay .menu_screen .left .logo {
+  width: 100%;
+  height: 100%;
+  transform: scale(1); /* make sprite bigger */
+  image-rendering: pixelated; /* keep pixel look */
+  background-image: url("./assets/Logo.gif");
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.game_screen .title_screen .overlay .menu_screen .left .title_logo {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  background-image: url("./assets/CatLogo.gif");
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  background-repeat: no-repeat;
+  transform: scale(0.5);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.game_screen .title_screen .overlay .menu_screen .right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.game_screen .title_screen .overlay .menu_screen .right .container {
+  display: flex;
+  justify-content: flex-start;
+  row-gap: 3rem;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  padding-top: 3rem;
+}
+.game_screen .title_screen .overlay .menu_screen .right .container button {
+  border: 5px solid black;
+  padding: 1rem;
+  font-family: "Press Start 2P", system-ui;
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  cursor: pointer;
+  width: 80%;
+  font-size: 1rem;
+}
+.game_screen .title_screen .overlay .menu_screen .right h1 {
+  color: white;
+  text-shadow: 0px 2px 1px black;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+@keyframes madzyWalk {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -630px;
+  } /* -(frameHeight × 7 frames) */
 }/*# sourceMappingURL=style.css.map */
